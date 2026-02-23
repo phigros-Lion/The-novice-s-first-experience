@@ -1,4 +1,3 @@
-#include<bits/stdc++.h>
 #include <iostream>
 #include <chrono>
 #include <thread>
@@ -15,15 +14,15 @@ void clearScreen(){
 void displayCountdown(int minutes,int seconds,int totalSeconds){
     clearScreen();
     cout<<"==============================\n";
-    cout<<"       µ¹¼ÆÊ±³ÌÐò\n";
+    cout<<"       å€’è®¡æ—¶ç¨‹åº\n";
     cout<<"==============================\n\n";
     int barWidth=50;
     float progress=1.0f-(static_cast<float>(minutes*60+seconds)/totalSeconds);
-    cout<<"Ê£ÓàÊ±¼ä: ";
+    cout<<"å‰©ä½™æ—¶é—´: ";
     cout<<setfill('0')<<setw(2)<<minutes<<":";
     cout<<setfill('0')<<setw(2)<<seconds<<"\n\n";
     
-    cout<<"½ø¶È: [";
+    cout<<"è¿›åº¦: [";
     int pos=barWidth*progress;
     for(int i=0; i<barWidth;i++){
         if(i<pos)cout<<"=";
@@ -31,7 +30,7 @@ void displayCountdown(int minutes,int seconds,int totalSeconds){
         else cout<<" ";
     }
     cout<<"] "<<int(progress*100.0)<<"%\n\n";
-    cout<<"°´ Ctrl+C ÖÕÖ¹³ÌÐò\n";
+    cout<<"æŒ‰ Ctrl+C ç»ˆæ­¢ç¨‹åº\n";
     cout<<"==============================\n";
 }
 void startCountdown(int totalMinutes,int totalSeconds){
@@ -45,48 +44,48 @@ void startCountdown(int totalMinutes,int totalSeconds){
         int seconds=remainingTime%60;
         displayCountdown(minutes,seconds,totalTime);
         if (remainingTime <= 10){
-            cout<<"\n¾¯¸æ: Ê±¼ä¼´½«½áÊø£¡\n";
+            cout<<"\nè­¦å‘Š: æ—¶é—´å³å°†ç»“æŸï¼\n";
         }
     }
     clearScreen();
-    cout<<"!!! Ê±¼äµ½ !!!\n";
+    cout<<"!!! æ—¶é—´åˆ° !!!\n";
     this_thread::sleep_for(chrono::milliseconds(500));
-    cout<<"\nµ¹¼ÆÊ±ÒÑ½áÊø¡£\n";
+    cout<<"\nå€’è®¡æ—¶å·²ç»“æŸã€‚\n";
 }
 void getUserInput(int &minutes, int &seconds){
     clearScreen();
     while(true){
-        cout<<"ÇëÊäÈë·ÖÖÓÊý (0-60): ";
+        cout<<"è¯·è¾“å…¥åˆ†é’Ÿæ•° (0-60): ";
         cin>>minutes;
         if(cin.fail()||minutes<0||minutes>60){
             cin.clear();
             cin.ignore(10000,'\n');
-            cout<<"ÊäÈëÎÞÐ§£¬ÇëÖØÐÂÊäÈë£¡\n";
+            cout<<"è¾“å…¥æ— æ•ˆï¼Œè¯·é‡æ–°è¾“å…¥ï¼\n";
         } 
 		else{
             break;
         }
     }
     while(true){
-        cout<<"ÇëÊäÈëÃëÊý (0-59): ";
+        cout<<"è¯·è¾“å…¥ç§’æ•° (0-59): ";
         cin>>seconds;
         if(cin.fail()||seconds<0||seconds>=60){
             cin.clear();
             cin.ignore(10000,'\n');
-            cout<<"ÊäÈëÎÞÐ§£¬ÇëÖØÐÂÊäÈë£¡\n";
+            cout<<"è¾“å…¥æ— æ•ˆï¼Œè¯·é‡æ–°è¾“å…¥ï¼\n";
         }
 		else{
             break;
         }
     }
     if(minutes==0&&seconds==0){
-        cout<<"\n´íÎó: µ¹¼ÆÊ±Ê±¼ä±ØÐë´óÓÚ0£¡\n";
-        cout<<"Ê¹ÓÃÄ¬ÈÏÖµ: 1·ÖÖÓ\n";
+        cout<<"\né”™è¯¯: å€’è®¡æ—¶æ—¶é—´å¿…é¡»å¤§äºŽ0ï¼\n";
+        cout<<"ä½¿ç”¨é»˜è®¤å€¼: 1åˆ†é’Ÿ\n";
         minutes=1;
         seconds=0;
     }
-	cout<<"\nÉèÖÃÍê³É: "<<minutes<<"·Ö"<<seconds<<"Ãë\n";
-    cout<<"°´ Enter ¼ü¿ªÊ¼µ¹¼ÆÊ±...";
+	cout<<"\nè®¾ç½®å®Œæˆ: "<<minutes<<"åˆ†"<<seconds<<"ç§’\n";
+    cout<<"æŒ‰ Enter é”®å¼€å§‹å€’è®¡æ—¶...";
     cin.ignore();
     cin.get();
 }
@@ -96,11 +95,12 @@ int main() {
 		int minutes,seconds;
         getUserInput(minutes,seconds);
         startCountdown(minutes,seconds);
-        cout<<"\nÊÇ·ñ¿ªÊ¼ÐÂµÄµ¹¼ÆÊ±£¿(y/n): ";
+        cout<<"\næ˜¯å¦å¼€å§‹æ–°çš„å€’è®¡æ—¶ï¼Ÿ(y/n): ";
         cin>>choice;
         cin.ignore(10000,'\n');
     }
 	while(choice=='y'||choice=='Y');
-    cout<<"\n¸ÐÐ»Ê¹ÓÃµ¹¼ÆÊ±³ÌÐò£¡\n";
+    cout<<"\næ„Ÿè°¢ä½¿ç”¨å€’è®¡æ—¶ç¨‹åºï¼\n";
     return 0;
 }
+
